@@ -13,16 +13,19 @@ namespace FHHG {
 
     template<Eigen::Index nrows, Eigen::Index ncols> using real_matrix = Eigen::Matrix<h_float, nrows, ncols>;
     template<Eigen::Index nrows> using real_vector = Eigen::Vector<h_float, nrows>;
-    
-    using nd_vector = real_vector<Eigen::Dynamic>;
 
     template<Eigen::Index nrows, Eigen::Index ncols> using complex_matrix = Eigen::Matrix<h_complex, nrows, ncols>;
     template<Eigen::Index nrows> using complex_vector = Eigen::Vector<h_complex, nrows>;
 
+    using nd_vector = real_vector<Eigen::Dynamic>;
+    using ncd_vector = complex_vector<Eigen::Dynamic>;
+
     constexpr h_complex imaginary_unit{0., 1.};
-    constexpr h_float hbar = h_float(6.582119569509065698e-13); // meV s
-    constexpr h_float k_B  = h_float(0.08617333262145177434);   // meV / K
-    constexpr h_float pi   = h_float(M_PI);
+    constexpr h_float hbar     = h_float(6.582119569509065698e-13); // meV s
+    constexpr h_float k_B      = h_float(0.08617333262145177434);   // meV / K
+    constexpr h_float pi       = h_float(M_PI);
+    constexpr h_float sqrt_two_pi = h_float(2.50662827463100050241576528481104525300698674060993831662992357634229365460); // sqrt(2 * pi)
+    constexpr h_float sqrt_pi_over_two = h_float(1.25331413731550025120788264240552262650349337030496915831496178817114682730); // sqrt(pi / 2)
 
     constexpr h_float fermi_function(h_float energy, h_float beta) {
         if (beta == std::numeric_limits<h_float>::infinity()) {

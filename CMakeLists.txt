@@ -12,7 +12,7 @@ include_directories(
 )
 
 find_package(OpenMP REQUIRED)
-find_package(MPI REQUIRED)
+#find_package(MPI REQUIRED)
 find_package(mrock REQUIRED)
 
 if(CLUSTER_BUILD)
@@ -22,10 +22,17 @@ else()
 endif()
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../PhdUtility/cmake/mrock-information.cmake)
 
+add_subdirectory(sources/FHHG/Laser)
+
 add_executable(fourier_hhg 
     sources/fourier_hhg.cpp
 )
+target_sources(fourier_hhg PRIVATE
+    sources/FHHG/DiracSystem.cpp
+    sources/FHHG/State.cpp
+)
+
 SET_COMPILER_FLAGS(fourier_hhg)
 
-target_link_libraries(fourier_hhg PRIVATE OpenMP::OpenMP_CXX ${mrock_LIBRARIES})
+target_link_libraries(fourier_hhg PRIVATE Laser OpenMP::OpenMP_CXX ${mrock_LIBRARIES})
 target_include_directories(fourier_hhg PRIVATE ${mrock_INCLUDE_DIRS})

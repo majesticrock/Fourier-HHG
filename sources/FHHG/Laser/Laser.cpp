@@ -10,6 +10,7 @@ namespace FHHG::Laser {
     Laser::Laser(h_float photon_energy, h_float E_0, int max_frequency, int n_subdivisions)
         : momentum_amplitude{field_conversion * E_0 / (photon_energy)}, 
           max_frequency{max_frequency},
-          n_subdivisions{n_subdivisions} 
+          n_subdivisions{n_subdivisions},
+          N{max_frequency * n_subdivisions}
     {}
 }

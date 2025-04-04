@@ -7,7 +7,7 @@ namespace FHHG::Laser {
         const h_float momentum_amplitude{}; // e E_0 / (hbar omega_L)
         const int max_frequency{}; // in units of hbar omega_L
         const int n_subdivisions{}; // number of subdivisions per hbar omega_L
-
+        const int N{}; // total number of frequencies
         /**
          * @param photon_energy \f$ \hbar \omega_L \f$ in meV
          * @param E_0 peak electric field strength in MV / cm
